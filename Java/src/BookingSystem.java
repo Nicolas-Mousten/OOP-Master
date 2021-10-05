@@ -1,9 +1,8 @@
 public class BookingSystem {//Create the master class and there names
     public String bookingSystemName;
     public String eventName;
-    public BookingSystem(String bookingSystemName, String eventName){
+    public BookingSystem(String bookingSystemName){
         this.bookingSystemName = bookingSystemName;
-        this.eventName = eventName;
     }
 
     @Override
@@ -16,9 +15,10 @@ public class BookingSystem {//Create the master class and there names
 }
 class Event extends BookingSystem{//Creates the event and the date
     public String date;
-    public Event(String bookingSystemName, String eventName, String date){
-        super(bookingSystemName, eventName);
+    public Event(String bookingSystemName, String eventName, String date, String location, int maxAmountOfAttendes){
+        super(bookingSystemName);
         this.date = date;
+        this.eventName = eventName;
     }
 
     @Override
@@ -32,8 +32,8 @@ class Event extends BookingSystem{//Creates the event and the date
 }
 class Band extends Event{
     public int salary;
-    public Band(String bookingSystemName, String eventName, String date, int salary){
-        super(bookingSystemName, eventName, date);
+    public Band(String bookingSystemName, String eventName, String date, String location, int maxAmountOfAttendes, String bandName, int salary, int minSalary){
+        super(bookingSystemName, eventName, date, location, maxAmountOfAttendes);
         this.salary = salary;
     }
     public int salary(int input, int amount, int minSalary){
@@ -52,11 +52,12 @@ class Band extends Event{
                 ", date='" + date + '\'' +
                 ", salary=" + salary +
                 '}';
-    }}
+    }
+}
 
 class RunBookingSystem{
     public static void main(String[] args) {
-        Band oneDevision = new Band("To Fast For You", "Rock And Roll","13 September 2021",25000);
-        oneDevision.salary = oneDevision.salary(oneDevision.salary, 100, );
+        Band oneDevision = new Band();
+        oneDevision.salary = oneDevision.salary(oneDevision.salary, 100, 10000);
         System.out.println(oneDevision);
     }}
